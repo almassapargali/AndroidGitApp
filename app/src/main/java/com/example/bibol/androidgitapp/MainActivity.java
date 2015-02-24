@@ -1,8 +1,8 @@
 package com.example.bibol.androidgitapp;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 import com.example.bibol.androidgitapp.model.User;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     EditText usernameField;
 
