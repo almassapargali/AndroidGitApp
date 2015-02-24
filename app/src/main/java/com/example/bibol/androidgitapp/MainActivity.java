@@ -37,7 +37,8 @@ public class MainActivity extends ActionBarActivity {
 
             GithubApiClient.instance().getUser(username, new GithubApiClientResponseHandler<User>() {
                 @Override
-                public void onSuccess(User response) {
+                public void onSuccess(User user) {
+                    // show user activity
                     dialog.hide();
                 }
 
