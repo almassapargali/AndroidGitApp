@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
                 @Override
                 public void onSuccess(User user) {
                     // show user activity
-                    dialog.hide();
+                    dialog.dismiss();
                 }
 
                 @Override
