@@ -3,17 +3,12 @@ package com.example.bibol.androidgitapp;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.loopj.android.http.JsonHttpResponseHandler;
-
-import org.apache.http.Header;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.example.bibol.androidgitapp.model.User;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -40,22 +35,17 @@ public class MainActivity extends ActionBarActivity {
                     "Getting user information ...",
                     null, false, false);
 
-            GithubApiClient.instance().getUser(username, new JsonHttpResponseHandler() {
+            GithubApiClient.instance().getUser(username, new GithubApiClientResponseHandler<User>() {
                 @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                    Log.d("Github API", response.toString());
+                public void onSuccess(User user) {
+                    // show user activity
                     dialog.hide();
                 }
 
                 @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    Log.e("Github API", errorResponse.toString());
+                public void onFailure(int errorCode, String errorMessage) {
                     dialog.dismiss();
-                    try {
-                        Toast.makeText(MainActivity.this, errorResponse.getString("message"), Toast.LENGTH_SHORT).show();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                    Toast.makeText(MainActivity.this, errorMessage, Toast.LENGTH_SHORT).show();
                 }
             });
         }
