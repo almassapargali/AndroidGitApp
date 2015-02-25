@@ -8,8 +8,7 @@ android:orientation="vertical">
 <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:text="@string/accept"
-    android:id="@+id/">
+    android:text="@string/accept">
 </TextView>
 <ListView
     android:id="@+id/lvMain"

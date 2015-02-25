@@ -14,6 +14,8 @@ import com.example.bibol.androidgitapp.model.User;
 
 public class MainActivity extends Activity {
 
+    public static final String INTENT_USER_EXTRA = "INTENT_USER_EXTRA";
+
     EditText usernameField;
 
     @Override
@@ -39,14 +41,12 @@ public class MainActivity extends Activity {
             GithubApiClient.instance().getUser(username, new GithubApiClientResponseHandler<User>() {
                 @Override
                 public void onSuccess(User user) {
-                    // show user activity
-
-                   // public void onClick(View v){
-                        Intent intent = new Intent(MainActivity.this, UserActivity.class);
-                        startActivity(intent);
-                   // }
-
                     dialog.dismiss();
+
+                    // show user activity
+                    Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                    intent.putExtra(INTENT_USER_EXTRA, user);
+                    startActivity(intent);
                 }
 
                 @Override

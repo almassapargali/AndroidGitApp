@@ -3,10 +3,12 @@ package com.example.bibol.androidgitapp.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
+
 /**
  * Created by almassapargali on 2/24/15.
  */
-public class User {
+public class User implements Serializable {
     private String username, fullName, email;
     private Integer id;
     private String avatarUrl;
