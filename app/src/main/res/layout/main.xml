@@ -12,7 +12,8 @@
         android:id="@+id/button"
         android:layout_marginTop="67dp"
         android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ripple"/>
 
     <EditText
         android:layout_width="fill_parent"
