@@ -2,6 +2,7 @@ package com.example.bibol.androidgitapp;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +40,12 @@ public class MainActivity extends Activity {
                 @Override
                 public void onSuccess(User user) {
                     // show user activity
+
+                   // public void onClick(View v){
+                        Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                        startActivity(intent);
+                   // }
+
                     dialog.dismiss();
                 }
 
