@@ -32,7 +32,9 @@ public class GithubApiClient {
     }
 
     public void getUser(final String username, final GithubApiClientResponseHandler<User> responseHandler) {
+
         client.get(getAbsoluteUrl("users/" + username), null, new JsonHttpResponseHandler() {
+
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d(LOG_TAG, response.toString());

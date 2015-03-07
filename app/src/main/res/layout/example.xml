@@ -1,30 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="5dp" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/icon"
+
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ff81e6fa"
-        android:src="@drawable/GithubMainIcon"
-        android:scaleType="fitStart"/>
-
-        <TextView
-            android:id="@+id/tv_event2"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_toRightOf="@id/icon"
-            android:layout_toEndOf="@id/icon"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            android:layout_centerVertical="true"/>
-
-    </RelativeLayout>
+        android:id="@+id/spinner" />
+</LinearLayout>
