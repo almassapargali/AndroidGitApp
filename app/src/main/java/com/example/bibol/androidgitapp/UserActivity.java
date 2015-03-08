@@ -2,7 +2,6 @@ package com.example.bibol.androidgitapp;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +22,7 @@ public class UserActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        avatar_view = (ImageView) findViewById(R.id.main_image);
+    //    avatar_view = (ImageView) findViewById(R.id.main_image);
         email_view = (TextView) findViewById(R.id.email_name);
         username_view = (TextView) findViewById(R.id.user_name);
 
@@ -33,12 +32,12 @@ public class UserActivity extends Activity {
 
         String gUsername = intent.getStringExtra(currentUser.getUsername());
         String gEmail = intent.getStringExtra(currentUser.getEmail());
-        String gUrl = intent.getStringExtra(currentUser.getAvatarUrl());
+    //    String gUrl = intent.getStringExtra(currentUser.getAvatarUrl());
 
 
         email_view.setText(gEmail);
         username_view.setText(gUsername);
-        avatar_view.setImageURI(Uri.parse(gUrl));
+      //  avatar_view.setImageURI(Uri.parse(gUrl));
 
 
 
