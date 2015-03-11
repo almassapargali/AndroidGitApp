@@ -1,8 +1,6 @@
 package com.example.bibol.androidgitapp;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -16,60 +14,37 @@ import com.android.volley.toolbox.Volley;
 import com.example.bibol.androidgitapp.model.BitmapLruCache;
 import com.example.bibol.androidgitapp.model.User;
 
-
 public class UserActivity extends Activity {
 
     User currentUser;
-    private ImageView avatarView;
-    private TextView email_view,username_view;
-
+    ImageView avatarView;
+    TextView emailView;
+    TextView usernameView;
+    private NetworkImageView networkImageView;
 
     private RequestQueue mRequestQueue;
     private ImageLoader imageLoader;
 
-
-    private NetworkImageView networkImageView;
-
     private static final String IMAGE_URL = "http://developer.android.com/images/gp-device.png";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
         avatarView = (ImageView) findViewById(R.id.avatar);
-        email_view = (TextView) findViewById(R.id.email_name);
-        username_view = (TextView) findViewById(R.id.user_name);
-
-        Intent intent = getIntent();
-        currentUser = (User) intent.getSerializableExtra(MainActivity.INTENT_USER_EXTRA);
-
-        String gUsername = intent.getStringExtra(currentUser.getUsername());
-        String gEmail = intent.getStringExtra(currentUser.getEmail());
-        String gUrl = intent.getStringExtra(currentUser.getAvatarUrl());
-
-
-        email_view.setText(gEmail);
-        username_view.setText(gUsername);
-
-
+        emailView = (TextView) findViewById(R.id.email_name);
+        usernameView = (TextView) findViewById(R.id.user_name);
         networkImageView = (NetworkImageView) findViewById(R.id.networkimage);
 
+        currentUser = (User) getIntent().getSerializableExtra(MainActivity.INTENT_USER_EXTRA);
+
+        emailView.setText(currentUser.getEmail());
+        usernameView.setText(currentUser.getUsername());
 
         mRequestQueue = Volley.newRequestQueue(this);
         imageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(
                 BitmapLruCache.getDefaultLruCacheSize()));
-    }
-
-    public void btnLoadImageClick(View v) {
-
-        imageLoader.get(IMAGE_URL, ImageLoader.getImageListener(avatarView,
-                R.drawable.ic_launcher, R.drawable.githubmainicon));
-    }
-
-    public void btnLoadNetWorkImageViewClick(View v) {
         networkImageView.setImageUrl(IMAGE_URL, imageLoader);
     }
 

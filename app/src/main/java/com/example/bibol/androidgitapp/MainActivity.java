@@ -32,7 +32,7 @@ public class MainActivity extends Activity {
     View.OnClickListener oclBtnOk = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String username = usernameField.getText().toString(); // bibol
+            final String username = usernameField.getText().toString(); // bibol
 
             final ProgressDialog dialog = ProgressDialog.show(MainActivity.this,
                     "Getting user information ...",

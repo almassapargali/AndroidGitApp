@@ -9,9 +9,7 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Bibol on 24.02.2015.
- */
+
 public class GithubApiClient {
     private static final String LOG_TAG = "Github API";
     private static final String BASE_URL = "https://api.github.com/";
