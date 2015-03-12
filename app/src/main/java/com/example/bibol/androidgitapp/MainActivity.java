@@ -14,7 +14,7 @@ import com.example.bibol.androidgitapp.model.User;
 
 public class MainActivity extends Activity {
 
-    public static final String INTENT_USER_EXTRA = "INTENT_USER_EXTRA";
+    private static final String INTENT_USER_EXTRA = "INTENT_USER_EXTRA";
 
     EditText usernameField;
 

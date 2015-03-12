@@ -7,10 +7,10 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String username, fullName, email;
-    private Integer id;
+    private int id;
     private String avatarUrl;
     private String companyName, location, website;
-    private Integer followersCount, followingCount, reposCount;
+    private int followersCount, followingCount, reposCount;
 
     public String getUsername() {
         return username;

@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public class Repository implements Serializable {
     private String name, fullName;
-    private Integer id;
+    private int id;
     private String description;
-    private Integer stargazersCount,watchersCount,forksCount;
+    private int stargazersCount,watchersCount,forksCount;
 
     public Integer getStargazersCount() {
         return stargazersCount;
