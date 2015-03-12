@@ -4,10 +4,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.Serializable;
 
-
 public class Repository implements Serializable {
     private String name, fullName;
     private Integer id;
+    private String description;
+    private Integer stargazersCount, watchersCount, forksCount;
 
     public Integer getStargazersCount() {
         return stargazersCount;
@@ -20,9 +21,6 @@ public class Repository implements Serializable {
     public Integer getForksCount() {
         return forksCount;
     }
-
-    private Integer stargazersCount,watchersCount,forksCount;
-    private String description;
 
     public String getName() {
         return name;
@@ -47,12 +45,10 @@ public class Repository implements Serializable {
             repository.fullName = json.getString("full_name");
             repository.description = json.getString("description");
             repository.id = json.getInt("id");
-
         } catch (JSONException e) {
             e.printStackTrace();
-            throw new InstantiationException("Can't parse User from given JSON");
+            throw new InstantiationException("Can't parse Repository from given JSON");
         }
         return repository;
     }
-
 }
