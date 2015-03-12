@@ -5,9 +5,6 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 
-/**
- * Created by almassapargali on 2/24/15.
- */
 public class User implements Serializable {
     private String username, fullName, email;
     private Integer id;

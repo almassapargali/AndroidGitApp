@@ -6,21 +6,13 @@
     android:layout_height="match_parent"
     android:background="#ffffeac4">
 
-    <com.android.volley.toolbox.NetworkImageView
-        android:id="@+id/networkimage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="fitXY"
-        android:contentDescription="@string/main_capture"
-        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
-        android:layout_below="@+id/networkimage"
         android:id="@+id/Linear1">
 
-        <ImageView
+        <com.android.volley.toolbox.NetworkImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="fitEnd"
@@ -38,7 +30,10 @@
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="13sp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
                 android:background="#ffa9a697"
                 />
 
@@ -46,7 +41,10 @@
                 android:id="@+id/email_name"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:textSize="13sp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#FFF"
                 android:layout_below="@+id/user_name"
                 android:background="#ffa9a697"
                 />
@@ -54,20 +52,7 @@
         </RelativeLayout>
 
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#7000"
-        android:gravity="center"
-        android:paddingBottom="15dp"
-        android:paddingTop="15dp"
-        android:textColor="#FFF"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:id="@+id/textView"
-        android:text="@string/accept"
-        />
+
 
 </RelativeLayout>
 

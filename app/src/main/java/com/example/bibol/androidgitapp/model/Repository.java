@@ -8,6 +8,19 @@ import java.io.Serializable;
 public class Repository implements Serializable {
     private String name, fullName;
     private Integer id;
+
+    public Integer getStargazersCount() {
+        return stargazersCount;
+    }
+
+    public Integer getWatchersCount() {
+        return watchersCount;
+    }
+
+    public Integer getForksCount() {
+        return forksCount;
+    }
+
     private Integer stargazersCount,watchersCount,forksCount;
     private String description;
 

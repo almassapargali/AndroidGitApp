@@ -6,9 +6,12 @@ import com.example.bibol.androidgitapp.model.*;
 import com.loopj.android.http.*;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class GithubApiClient {
     private static final String LOG_TAG = "Github API";
@@ -30,9 +33,7 @@ public class GithubApiClient {
     }
 
     public void getUser(final String username, final GithubApiClientResponseHandler<User> responseHandler) {
-
         client.get(getAbsoluteUrl("users/" + username), null, new JsonHttpResponseHandler() {
-
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.d(LOG_TAG, response.toString());
@@ -51,6 +52,46 @@ public class GithubApiClient {
                 } catch (JSONException e) {
                     responseHandler.onFailure(GithubApiClientResponseHandler.JSON_PARSING_FAILED_ERROR, errorResponse.toString());
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(LOG_TAG, responseString);
+                responseHandler.onFailure(statusCode, responseString);
+            }
+        });
+    }
+
+    public void getUserRepos(final String username, final GithubApiClientResponseHandler<List<Repository>> responseHandler) {
+        client.get(getAbsoluteUrl("users/" + username + "/repos"), null, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                Log.d(LOG_TAG, response.toString());
+                ArrayList<Repository> repos = new ArrayList<>();
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        repos.add(Repository.fromJSON(response.getJSONObject(i)));
+                    } catch (JSONException | InstantiationException e) {
+                        responseHandler.onFailure(GithubApiClientResponseHandler.JSON_PARSING_FAILED_ERROR, e.getMessage());
+                    }
+                }
+                responseHandler.onSuccess(repos);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.e(LOG_TAG, errorResponse.toString());
+                try {
+                    responseHandler.onFailure(statusCode, errorResponse.getString("message"));
+                } catch (JSONException e) {
+                    responseHandler.onFailure(GithubApiClientResponseHandler.JSON_PARSING_FAILED_ERROR, errorResponse.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.e(LOG_TAG, responseString);
+                responseHandler.onFailure(statusCode, responseString);
             }
         });
     }
