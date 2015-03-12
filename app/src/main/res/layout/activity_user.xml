@@ -21,10 +21,10 @@
             android:contentDescription="@string/main_capture"
 
             />
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            >
+            android:layout_height="100dp">
 
             <TextView
                 android:id="@+id/user_name"
@@ -46,13 +46,51 @@
                 android:textStyle="bold"
                 android:textColor="#FFF"
                 android:layout_below="@+id/user_name"
-                android:background="#ffa9a697"
-                />
+                android:background="#ffa9a697" />
 
         </RelativeLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/Linear1"
+        android:orientation="horizontal"
+        android:background="#fffff6f8"
+        >
+        <TextView
+            android:id="@+id/followersCountView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF6D36FF"
 
+            />
+        <TextView
+            android:id="@+id/followingCountView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF6D36FF"
+            />
+        <TextView
+            android:id="@+id/reposCountView"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#FF6D36FF"
+            />
+
+        </LinearLayout>
 
 </RelativeLayout>
 

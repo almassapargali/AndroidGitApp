@@ -12,13 +12,15 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.example.bibol.androidgitapp.model.BitmapLruCache;
+import com.example.bibol.androidgitapp.model.Repository;
 import com.example.bibol.androidgitapp.model.User;
 
 public class UserActivity extends Activity {
 
     User currentUser;
-    TextView emailView;
-    TextView usernameView;
+    Repository currentRepository;
+    TextView emailView,usernameView;
+    TextView followersCountView,followingCountView,reposCountView;
     private NetworkImageView networkImageView;
 
     private RequestQueue mRequestQueue;
@@ -32,12 +34,17 @@ public class UserActivity extends Activity {
         networkImageView = (NetworkImageView) findViewById(R.id.avatar);
         emailView = (TextView) findViewById(R.id.email_name);
         usernameView = (TextView) findViewById(R.id.user_name);
-
+        followersCountView = (TextView) findViewById(R.id.followersCountView);
+        followingCountView = (TextView) findViewById(R.id.followingCountView);
+        reposCountView = (TextView) findViewById(R.id.reposCountView);
 
         currentUser = (User) getIntent().getSerializableExtra(MainActivity.INTENT_USER_EXTRA);
 
         emailView.setText(currentUser.getEmail());
         usernameView.setText(currentUser.getUsername());
+        followersCountView.setText(currentUser.getFollowersCount().toString());
+        followingCountView.setText(currentUser.getFollowingCount().toString());
+        reposCountView.setText(currentUser.getReposCount().toString());
 
 
         mRequestQueue = Volley.newRequestQueue(this);

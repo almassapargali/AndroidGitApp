@@ -8,7 +8,7 @@ public class Repository implements Serializable {
     private String name, fullName;
     private Integer id;
     private String description;
-    private Integer stargazersCount, watchersCount, forksCount;
+    private Integer stargazersCount,watchersCount,forksCount;
 
     public Integer getStargazersCount() {
         return stargazersCount;
@@ -45,6 +45,9 @@ public class Repository implements Serializable {
             repository.fullName = json.getString("full_name");
             repository.description = json.getString("description");
             repository.id = json.getInt("id");
+            repository.stargazersCount = json.getInt("stargazers_count");
+            repository.watchersCount = json.getInt("watchers_count");
+            repository.forksCount = json.getInt("forks_count");
         } catch (JSONException e) {
             e.printStackTrace();
             throw new InstantiationException("Can't parse Repository from given JSON");
