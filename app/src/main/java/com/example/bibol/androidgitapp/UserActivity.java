@@ -34,6 +34,8 @@ public class UserActivity extends Activity {
     TextView followersCountView,followingCountView,reposCountView;
     private NetworkImageView networkImageView;
 
+//    TextView repoNameView,descriptionView;
+
     private ImageLoader imageLoader;
 
     @Override
@@ -46,7 +48,7 @@ public class UserActivity extends Activity {
         imageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(
                 BitmapLruCache.getDefaultLruCacheSize()));
 
-        currentUser = (User) getIntent().getSerializableExtra(MainActivity.INTENT_USER_EXTRA);
+        currentUser = (User) getIntent().getSerializableExtra(MainActivity.getIntentUserExtra());
         setUserDeatils();
         loadUserRepositories();
     }
@@ -75,6 +77,11 @@ public class UserActivity extends Activity {
             public void onSuccess(List<Repository> repositoryList) {
                 repositories = repositoryList;
 
+                adapter = new ArrayAdapter<Repository>(UserActivity.this,R.layout.single_list,R.id.repo_name,repositories);
+
+                reposView = (ListView) findViewById(R.id.reposList);
+                reposView.setAdapter(adapter);
+
             }
 
             @Override
@@ -90,5 +97,4 @@ public class UserActivity extends Activity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
 }

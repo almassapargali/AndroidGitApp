@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.Serializable;
 
-public class Repository implements Serializable {
+public class Repository {
     private String name, fullName;
     private int id;
     private String description;
@@ -36,6 +36,11 @@ public class Repository implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 
     public static Repository fromJSON(JSONObject json) throws InstantiationException {

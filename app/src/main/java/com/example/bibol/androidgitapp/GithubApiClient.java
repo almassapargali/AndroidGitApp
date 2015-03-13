@@ -67,7 +67,7 @@ public class GithubApiClient {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
                 Log.d(LOG_TAG, response.toString());
-                ArrayList<Repository> repos = new ArrayList<>();
+                List<Repository> repos = new ArrayList<>();
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         repos.add(Repository.fromJSON(response.getJSONObject(i)));
