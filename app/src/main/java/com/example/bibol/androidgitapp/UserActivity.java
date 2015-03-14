@@ -24,17 +24,17 @@ import java.util.List;
 public class UserActivity extends Activity {
 
     User currentUser;
+   // Repository currentRepo;
 
     List<Repository> repositories;
     ArrayAdapter<Repository> adapter;
 
     ListView reposView;
 
-    TextView emailView,usernameView;
-    TextView followersCountView,followingCountView,reposCountView;
+    TextView repoDescriptionView;
+    TextView emailView, usernameView;
+    TextView followersCountView, followingCountView, reposCountView;
     private NetworkImageView networkImageView;
-
-//    TextView repoNameView,descriptionView;
 
     private ImageLoader imageLoader;
 
@@ -48,8 +48,9 @@ public class UserActivity extends Activity {
         imageLoader = new ImageLoader(mRequestQueue, new BitmapLruCache(
                 BitmapLruCache.getDefaultLruCacheSize()));
 
-        currentUser = (User) getIntent().getSerializableExtra(MainActivity.getIntentUserExtra());
+        currentUser = (User) getIntent().getSerializableExtra(MainActivity.INTENT_USER_EXTRA);
         setUserDeatils();
+       // setRepoDeatils();
         loadUserRepositories();
     }
 
@@ -60,6 +61,8 @@ public class UserActivity extends Activity {
         followersCountView = (TextView) findViewById(R.id.followersCountView);
         followingCountView = (TextView) findViewById(R.id.followingCountView);
         reposCountView = (TextView) findViewById(R.id.reposCountView);
+        reposView = (ListView) findViewById(R.id.reposList);
+        repoDescriptionView = (TextView) findViewById(R.id.description);
     }
 
     private void setUserDeatils() {
@@ -71,6 +74,10 @@ public class UserActivity extends Activity {
         networkImageView.setImageUrl(currentUser.getAvatarUrl(), imageLoader);
     }
 
+//    private void setRepoDeatils(){
+//        repoDescriptionView.setText(currentRepo.getDescription());
+//    }
+
     private void loadUserRepositories() {
         GithubApiClient.instance().getUserRepos(currentUser.getUsername(), new GithubApiClientResponseHandler<List<Repository>>() {
             @Override
@@ -78,10 +85,7 @@ public class UserActivity extends Activity {
                 repositories = repositoryList;
 
                 adapter = new ArrayAdapter<Repository>(UserActivity.this,R.layout.single_list,R.id.repo_name,repositories);
-
-                reposView = (ListView) findViewById(R.id.reposList);
                 reposView.setAdapter(adapter);
-
             }
 
             @Override

@@ -4,7 +4,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.Serializable;
 
-public class Repository {
+public class Repository implements Serializable {
     private String name, fullName;
     private int id;
     private String description;

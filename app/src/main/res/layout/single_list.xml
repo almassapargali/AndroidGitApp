@@ -5,14 +5,14 @@
         android:orientation="horizontal"
         android:id="@+id/Linear111">
 
-        <com.android.volley.toolbox.NetworkImageView
+        <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:scaleType="fitEnd"
+            android:scaleType="fitCenter"
             android:id="@+id/repo_icon"
             android:background="#fffff6f8"
             android:contentDescription="@string/main_capture"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/re_icon"
 
             />
 
