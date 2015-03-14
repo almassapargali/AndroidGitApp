@@ -21,16 +21,14 @@ import java.util.List;
 
 public class UserActivity extends Activity {
 
-    User currentUser;
+    private User currentUser;
 
-    RepositoryAdapter adapter;
+    private ListView reposView;
+    private RepositoryAdapter adapter;
 
-    ListView reposView;
-
-    TextView repoDescriptionView;
-    TextView emailView, usernameView;
-    TextView followersCountView, followingCountView, reposCountView;
     private NetworkImageView networkImageView;
+    private TextView emailView, usernameView;
+    private TextView followersCountView, followingCountView, reposCountView;
 
     private ImageLoader imageLoader;
 
@@ -60,7 +58,6 @@ public class UserActivity extends Activity {
         followingCountView = (TextView) findViewById(R.id.followingCountView);
         reposCountView = (TextView) findViewById(R.id.reposCountView);
         reposView = (ListView) findViewById(R.id.reposList);
-        repoDescriptionView = (TextView) findViewById(R.id.description);
     }
 
     private void setUserDetails() {

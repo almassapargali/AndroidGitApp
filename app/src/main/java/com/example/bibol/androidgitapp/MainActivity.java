@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
 
     public static final String INTENT_USER_EXTRA = "INTENT_USER_EXTRA";
 
-    EditText usernameField;
+    private EditText usernameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
