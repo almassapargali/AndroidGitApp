@@ -3,9 +3,7 @@ package com.example.bibol.androidgitapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +22,8 @@ import java.util.List;
 public class UserActivity extends Activity {
 
     User currentUser;
-   // Repository currentRepo;
 
-    List<Repository> repositories;
-    ArrayAdapter<Repository> adapter;
+    RepositoryAdapter adapter;
 
     ListView reposView;
 
@@ -49,9 +45,11 @@ public class UserActivity extends Activity {
                 BitmapLruCache.getDefaultLruCacheSize()));
 
         currentUser = (User) getIntent().getSerializableExtra(MainActivity.INTENT_USER_EXTRA);
-        setUserDeatils();
-       // setRepoDeatils();
+        setUserDetails();
         loadUserRepositories();
+
+        adapter = new RepositoryAdapter(UserActivity.this, new ArrayList<Repository>());
+        reposView.setAdapter(adapter);
     }
 
     private void setViews() {
@@ -65,7 +63,7 @@ public class UserActivity extends Activity {
         repoDescriptionView = (TextView) findViewById(R.id.description);
     }
 
-    private void setUserDeatils() {
+    private void setUserDetails() {
         emailView.setText(currentUser.getEmail());
         usernameView.setText(currentUser.getUsername());
         followersCountView.setText(currentUser.getFollowersCount().toString());
@@ -74,18 +72,11 @@ public class UserActivity extends Activity {
         networkImageView.setImageUrl(currentUser.getAvatarUrl(), imageLoader);
     }
 
-//    private void setRepoDeatils(){
-//        repoDescriptionView.setText(currentRepo.getDescription());
-//    }
-
     private void loadUserRepositories() {
         GithubApiClient.instance().getUserRepos(currentUser.getUsername(), new GithubApiClientResponseHandler<List<Repository>>() {
             @Override
             public void onSuccess(List<Repository> repositoryList) {
-                repositories = repositoryList;
-
-                adapter = new ArrayAdapter<Repository>(UserActivity.this,R.layout.single_list,R.id.repo_name,repositories);
-                reposView.setAdapter(adapter);
+                adapter.addAll(repositoryList);
             }
 
             @Override
